@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 
 st.title("Hello World")
@@ -16,3 +17,7 @@ if not name:
     st.stop()
 
 display_name(name)
+
+df = pd.DataFrame(data={"Name": ["Elahe", "Parham"], "Score1": [100, 50]})
+
+st.write(df)
