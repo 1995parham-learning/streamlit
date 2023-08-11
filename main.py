@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import matplotlib.pyplot as fig
 
 st.title("Hello World")
 
@@ -18,6 +19,11 @@ if not name:
 
 display_name(name)
 
-df = pd.DataFrame(data={"Name": ["Elahe", "Parham"], "Score1": [100, 50]})
+df = pd.DataFrame(data={"Name": ["Elahe", "Parham"], "Score": [100, 50]})
 
 st.write(df)
+
+df.set_index("Name").plot(
+    kind="bar", stacked=False, xlabel="Name", ylabel="Score"
+)
+st.pyplot(fig)
