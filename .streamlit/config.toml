@@ -1,0 +1,10 @@
+[server]
+port = 1378
+headless = true
+address = "0.0.0.0"
+
+[client]
+showErrorDetails = true
+
+[theme]
+base = "dark"

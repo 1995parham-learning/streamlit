@@ -8,5 +8,7 @@ Using Streamlit you can provide data, cache, and even plots for your users easil
 ## How to run?
 
 ```bash
+streamlit config show
+
 streamlit run main.py
 ```
