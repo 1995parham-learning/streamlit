@@ -1,0 +1,22 @@
+{
+  "group": {
+    "default": {
+      "targets": [
+        "streamlit"
+      ]
+    }
+  },
+  "variable": {
+    "TAG": {
+      "default": "latest"
+    }
+  },
+  "target": {
+    "streamlit": {
+      "dockerfile": "Dockerfile",
+      "tags": [
+        "ghcr.io/1995parham-learning/streamlist:${TAG}"
+      ]
+    }
+  }
+}
