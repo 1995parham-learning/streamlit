@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY . .
 
-RUN pipx run pipenv --system install
+RUN pip install --no-cache-dir --upgrade pipenv \
+  && pipenv install --system
 
 EXPOSE 1378
 
