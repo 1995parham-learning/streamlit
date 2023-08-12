@@ -12,6 +12,8 @@ requests = "*"
 
 [dev-packages]
 mypy = "*"
+types-requests = "*"
+pandas-stubs = "*"
 
 [requires]
 python_version = "3.11"

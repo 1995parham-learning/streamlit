@@ -37,8 +37,7 @@ def haversine_distance(lat_1: float, lon_1: float, lat_2: float, lon_2: float):
     return distance
 
 
-st.title("Estimated Time of Arrival")
-st.subtitle("Nostradamus")
+st.title("Nostradamus")
 
 
 cols = st.columns(2)
@@ -52,7 +51,7 @@ with cols[0]:
         # and we only stop this specific run.
         st.stop()
 
-    origin_lat, origin_lng = origin.split(",")
+    origin_lat, origin_lng = map(float, origin.split(","))
 
 with cols[1]:
     dest = st.text_input("Destination", placeholder="37.27284, 49.54639")
@@ -63,16 +62,11 @@ with cols[1]:
         # and we only stop this specific run.
         st.stop()
 
-    dest_lat, dest_lng = dest.split(",")
+    dest_lat, dest_lng = map(float, dest.split(","))
 
 day_type = st.selectbox("Day Type", [dt.name for dt in DayType])
 
 dep_time = st.time_input("Departure time")
-
-origin_lat = float(origin_lat)
-origin_lng = float(origin_lng)
-dest_lat = float(dest_lat)
-dest_lng = float(dest_lng)
 
 points = pd.DataFrame(
     {
