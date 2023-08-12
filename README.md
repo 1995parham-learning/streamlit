@@ -1,4 +1,6 @@
-# Streamlit
+<h1 align="center"> Streamlit </h1>
+
+> When Nostradamus uses Streamlit
 
 ## Introduction
 
