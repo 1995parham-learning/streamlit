@@ -45,7 +45,7 @@ cols = st.columns(2)
 with cols[0]:
     origin = st.text_input("Origin", placeholder="37.271408, 49.504597")
 
-    if not origin:
+    if not origin or "," not in origin:
         st.error("no origin entered")
         # stop this run, please note that the main application is still running
         # and we only stop this specific run.
@@ -56,7 +56,7 @@ with cols[0]:
 with cols[1]:
     dest = st.text_input("Destination", placeholder="37.27284, 49.54639")
 
-    if not dest:
+    if not dest or "," not in dest:
         st.error("no destination entered")
         # stop this run, please note that the main application is still running
         # and we only stop this specific run.
