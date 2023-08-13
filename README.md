@@ -19,3 +19,7 @@ streamlit config show
 
 streamlit run main.py
 ```
+
+## References
+
+- https://docs.streamlit.io/library/api-reference
