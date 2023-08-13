@@ -20,3 +20,18 @@ spec:
       name:  http
   restartPolicy: Always
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: streamlit
+  name: streamlit
+spec:
+  ports:
+  - port: 1378
+    protocol: TCP
+    targetPort: 1378
+  selector:
+    app: streamlit
+  sessionAffinity: None
+  type: ClusterIP
