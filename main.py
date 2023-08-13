@@ -89,17 +89,18 @@ if (not dep_time) or (not day_type):
 
 assert day_type is not None
 
-resp = requests.post(
-    "http://172.21.88.59:1378/predict",
-    json={
-        "origin_lat": origin_lat,
-        "origin_lng": origin_lng,
-        "destination_lat": dest_lat,
-        "destination_lng": dest_lng,
-        "hour": dep_time.hour,
-        "haversine_distance": hd,
-        "day_type": DayType[day_type].value,
-    },
-)
+with st.spinner("Wait for ETA..."):
+    resp = requests.post(
+        "http://172.21.88.59:1378/predict",
+        json={
+            "origin_lat": origin_lat,
+            "origin_lng": origin_lng,
+            "destination_lat": dest_lat,
+            "destination_lng": dest_lng,
+            "hour": dep_time.hour,
+            "haversine_distance": hd,
+            "day_type": DayType[day_type].value,
+        },
+    )
 
 st.text(f"{resp.json()}")
