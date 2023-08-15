@@ -1,6 +1,10 @@
 <h1 align="center"> Streamlit </h1>
 
 <p align="center">
+  <img alt="banner" src="./.github/assets/banner.png" height="200px" />
+</p>
+
+<p align="center">
   <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/1995parham-learning/streamlit/ci.yaml?style=for-the-badge&logo=github">
   <img alt="GitHub Pipenv locked Python version" src="https://img.shields.io/github/pipenv/locked/python-version/1995parham-learning/streamlit?style=for-the-badge&logo=python">
 </p>
@@ -22,4 +26,4 @@ streamlit run main.py
 
 ## References
 
-- https://docs.streamlit.io/library/api-reference
+- <https://docs.streamlit.io/library/api-reference>
