@@ -11,10 +11,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   git \
   && rm -rf /var/lib/apt/lists/*
 
-COPY . .
+COPY Pipfile Pipfile
+COPY Pipfile.lock Pipfile.lock
 
 RUN pip install --no-cache-dir --upgrade pipenv \
   && pipenv install --system
+
+COPY . .
 
 EXPOSE 1378
 
