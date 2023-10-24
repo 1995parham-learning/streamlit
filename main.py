@@ -74,7 +74,7 @@ with cols[0]:
 
     query_params = st.experimental_get_query_params()
     query_params["origin"] = [str(origin_lat), str(origin_lng)]
-    st.experimental_set_query_params()
+    st.experimental_set_query_params(**query_params)
 
 with cols[1]:
     query_params = st.experimental_get_query_params()
@@ -105,7 +105,7 @@ with cols[1]:
 
     query_params = st.experimental_get_query_params()
     query_params["dest"] = [str(dest_lat), str(dest_lng)]
-    st.experimental_set_query_params()
+    st.experimental_set_query_params(**query_params)
 
 points = pd.DataFrame(
     {
@@ -147,7 +147,7 @@ with cols[0]:
 
     query_params = st.experimental_get_query_params()
     query_params["day_type"] = [day_type]
-    st.experimental_set_query_params()
+    st.experimental_set_query_params(**query_params)
 
 with cols[1]:
     query_params = st.experimental_get_query_params()
@@ -170,11 +170,11 @@ with cols[1]:
 
     query_params = st.experimental_get_query_params()
     query_params["dep_time"] = [dep_time.isoformat()]
-    st.experimental_set_query_params()
+    st.experimental_set_query_params(**query_params)
 
 with st.spinner("Wait for ETA..."):
     resp = requests.post(
-        "http://nostra-baly.smapp-traffic-staging:1378/predict",
+        "http://172.21.88.100:1378/predict",
         json={
             "origin_lat": origin_lat,
             "origin_lng": origin_lng,
