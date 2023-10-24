@@ -50,18 +50,20 @@ with cols[0]:
     origin_lat: float | None = None
     origin_lng: float | None = None
 
+    origin: str = ""
     if "origin" in query_params:
         origin_lat, origin_lng = (
             float(item) if item != "" else None
             for item in query_params.get("origin", ["", ""])
         )
+        origin = (
+            f"{origin_lat},{origin_lng}"
+            if origin_lat is not None and origin_lng is not None
+            else ""
+        )
 
     origin = st.text_input(
-        "Origin",
-        placeholder="37.271408, 49.504597",
-        value=f"{origin_lat},{origin_lng}"
-        if origin_lat is not None and origin_lng is not None
-        else "",
+        "Origin", placeholder="37.271408, 49.504597", value=origin
     )
 
     if not origin or "," not in origin:
@@ -79,18 +81,20 @@ with cols[1]:
     dest_lat: float | None = None
     dest_lng: float | None = None
 
+    dest: str = ""
     if "dest" in query_params:
         dest_lat, dest_lng = (
             float(item) if item != "" else None
             for item in query_params.get("dest", ["", ""])
         )
+        dest = (
+            f"{dest_lat},{dest_lng}"
+            if dest_lat is not None and dest_lng is not None
+            else ""
+        )
 
     dest = st.text_input(
-        "Destination",
-        placeholder="37.27284, 49.54639",
-        value=f"{dest_lat},{dest_lng}"
-        if dest_lat is not None and dest_lng is not None
-        else "",
+        "Destination", placeholder="37.27284, 49.54639", value=dest
     )
 
     if not dest or "," not in dest:
