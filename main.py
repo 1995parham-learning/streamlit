@@ -91,7 +91,7 @@ assert day_type is not None
 
 with st.spinner("Wait for ETA..."):
     resp = requests.post(
-        "http://172.21.88.59:1378/predict",
+        "http://nostra-baly.smapp-traffic-staging:1378/predict",
         json={
             "origin_lat": origin_lat,
             "origin_lng": origin_lng,
