@@ -8,6 +8,7 @@ spec:
   containers:
   - name: streamlit
     image: "ghcr.io/1995parham-learning/streamlist:latest"
+    ImagePullPolicy: Always
     resources:
       limits:
         cpu: 200m
