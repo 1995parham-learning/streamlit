@@ -35,3 +35,21 @@ spec:
     app: streamlit
   sessionAffinity: None
   type: ClusterIP
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: streamlit
+spec:
+  rules:
+    - host: >-
+        nostradamus-streamlit.smapp-traffic-staging.apps.private.okd4.teh-1.snappcloud.io
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: streamlit
+                port:
+                  number: 1378
