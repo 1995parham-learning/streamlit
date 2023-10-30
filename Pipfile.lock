@@ -937,12 +937,12 @@
         },
         "streamlit": {
             "hashes": [
-                "sha256:33f9ae0de5b7d59cd7daba87754c54ec837a76c24acfc41d1f8e5148f20903ee",
-                "sha256:726dd2bee638e0976aa72552900648d4ead4be28e30235355f10c25062669369"
+                "sha256:6827f14fe4a2658851b25de70ccf5e4aa25650a029ba4f0a9cc6fc2ba2a1b97d",
+                "sha256:be6fd240e290be2a79857b1ad7822b53a3c90f15cf6ce97d89ebf4d802d7edb1"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8' and python_full_version != '3.9.7'",
-            "version": "==1.27.2"
+            "version": "==1.28.0"
         },
         "tenacity": {
             "hashes": [
