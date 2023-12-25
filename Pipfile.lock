@@ -1150,18 +1150,17 @@
                 "sha256:f79b231bf5c16b1f39c7f4875e1ded36abee1591e98742b05d8a0fb55d8a3eec",
                 "sha256:fe6b44fb8fcdf7eda4ef4461b97b3f63c466b27ab151bec2366db8b197387841"
             ],
-            "index": "pypi",
-            "markers": "python_version >= '3.9'",
+            "markers": "python_version < '3.13'",
             "version": "==1.26.2"
         },
         "pandas-stubs": {
             "hashes": [
-                "sha256:992d97159e054ca3175ebe8321ac5616cf6502dd8218b03bb0eaf3c4f6939037",
-                "sha256:ce1691c71c5d67b8f332da87763f7f54650f46895d99964d588c3a5d79e2cacc"
+                "sha256:9c9a8db37b83ff4ff9f672644099abc624ed407aa46d9dcb5f305de9925b3d29",
+                "sha256:f0dd07b3bb2935ddcff9c7b7ba9076cf3529b968a0dee96fab53f5f8747974f7"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.9'",
-            "version": "==2.1.1.230928"
+            "version": "==2.1.4.231218"
         },
         "types-pytz": {
             "hashes": [
