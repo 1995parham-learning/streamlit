@@ -1,8 +1,10 @@
 import datetime
 import enum
 import math
+
 import pandas as pd
 import requests
+
 import streamlit as st
 
 
@@ -12,9 +14,7 @@ class DayType(enum.Enum):
     FRIDAY = 4
 
 
-def haversine_distance(
-    lat_1: float, lon_1: float, lat_2: float, lon_2: float
-) -> float:
+def haversine_distance(lat_1: float, lon_1: float, lat_2: float, lon_2: float) -> float:
     # Earth radius in kilometers
     earth_radius = 6371
 
@@ -46,15 +46,14 @@ st.title("Nostradamus")
 cols = st.columns(2)
 
 with cols[0]:
-    query_params = st.experimental_get_query_params()
     origin_lat: float | None = None
     origin_lng: float | None = None
 
     origin: str = ""
-    if "origin" in query_params:
+    if "origin" in st.query_params:
         origin_lat, origin_lng = (
             float(item) if item != "" else None
-            for item in query_params.get("origin", ["", ""])
+            for item in st.query_params.get("origin", ["", ""])
         )
         origin = (
             f"{origin_lat},{origin_lng}"
@@ -62,9 +61,7 @@ with cols[0]:
             else ""
         )
 
-    origin = st.text_input(
-        "Origin", placeholder="37.271408, 49.504597", value=origin
-    )
+    origin = st.text_input("Origin", placeholder="37.271408, 49.504597", value=origin)
 
     if not origin or "," not in origin:
         st.error("no origin entered")
@@ -72,20 +69,17 @@ with cols[0]:
 
     origin_lat, origin_lng = map(float, origin.split(","))
 
-    query_params = st.experimental_get_query_params()
-    query_params["origin"] = [str(origin_lat), str(origin_lng)]
-    st.experimental_set_query_params(**query_params)
+    st.query_params["origin"] = [str(origin_lat), str(origin_lng)]
 
 with cols[1]:
-    query_params = st.experimental_get_query_params()
     dest_lat: float | None = None
     dest_lng: float | None = None
 
     dest: str = ""
-    if "dest" in query_params:
+    if "dest" in st.query_params:
         dest_lat, dest_lng = (
             float(item) if item != "" else None
-            for item in query_params.get("dest", ["", ""])
+            for item in st.query_params.get("dest", ["", ""])
         )
         dest = (
             f"{dest_lat},{dest_lng}"
@@ -93,9 +87,7 @@ with cols[1]:
             else ""
         )
 
-    dest = st.text_input(
-        "Destination", placeholder="37.27284, 49.54639", value=dest
-    )
+    dest = st.text_input("Destination", placeholder="37.27284, 49.54639", value=dest)
 
     if not dest or "," not in dest:
         st.error("no destination entered")
@@ -103,9 +95,7 @@ with cols[1]:
 
     dest_lat, dest_lng = map(float, dest.split(","))
 
-    query_params = st.experimental_get_query_params()
-    query_params["dest"] = [str(dest_lat), str(dest_lng)]
-    st.experimental_set_query_params(**query_params)
+    st.query_params["dest"] = [str(dest_lat), str(dest_lng)]
 
 points = pd.DataFrame(
     {
@@ -124,13 +114,12 @@ st.text(f"Haversine distance: {hd}")
 cols = st.columns(2)
 
 with cols[0]:
-    query_params = st.experimental_get_query_params()
     day_type_index: int | None = None
-    if "day_type" in query_params:
+    if "day_type" in st.query_params:
         day_type_index = next(
             index
             for index, dt in enumerate(DayType)
-            if dt.name == query_params.get("day_type", ["-"])[0]
+            if dt.name == st.query_params.get("day_type", ["-"])[0]
         )
 
     day_type = st.selectbox(
@@ -145,17 +134,14 @@ with cols[0]:
 
     assert day_type is not None
 
-    query_params = st.experimental_get_query_params()
-    query_params["day_type"] = [day_type]
-    st.experimental_set_query_params(**query_params)
+    st.query_params["day_type"] = [day_type]
 
 with cols[1]:
-    query_params = st.experimental_get_query_params()
     dep_time: datetime.time | None = None
-    if "dep_time" in query_params:
+    if "dep_time" in st.query_params:
         try:
             dep_time = datetime.time.fromisoformat(
-                query_params.get("dep_time", [""])[0]
+                st.query_params.get("dep_time", [""])[0]
             )
         except ValueError:
             dep_time = None
@@ -168,9 +154,7 @@ with cols[1]:
 
     assert dep_time is not None
 
-    query_params = st.experimental_get_query_params()
-    query_params["dep_time"] = [dep_time.isoformat()]
-    st.experimental_set_query_params(**query_params)
+    st.query_params["dep_time"] = [dep_time.isoformat()]
 
 with st.spinner("Wait for ETA..."):
     resp = requests.post(
