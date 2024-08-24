@@ -12,9 +12,66 @@
 
 ## Introduction
 
-I am going to use [Streamlit](https://streamlit.io/) to provide data over beautiful UI.
-Using Streamlit you can provide data, cache, and even plots for your users easily to demonstrate your
-data and even your model.
+With [Streamlit](https://streamlit.io/), you can easily host your Python scripts as web applications,
+making it a great tool for demonstrating your results or models.
+
+## Development
+
+It's best to deploy your Streamlit applications separately rather than using a single deployment for all of them.
+Since Streamlit is built on Python, it's crucial to use a dependency manager for your application.
+Please consider one of the following options:
+
+- [Pipenv](https://pipenv.pypa.io/)
+- [Poetry](https://python-poetry.org/)
+- [Rye](https://rye.astral.sh/)
+
+In this example, we're using `pipenv` as our dependency manager, but feel free to choose any of the others.
+Most of these dependency managers can provide a specific Python version for your project,
+allowing you to use a different version than your system's default Python installation.
+
+```shell
+pipenv install streamlit
+```
+
+You may need following libraries too:
+
+- [`numpy`](https://numpy.org/)
+- [`pandas`](https://pandas.pydata.org/)
+- [`polars`](https://pola.rs/)
+
+```shell
+pipenv install numpy
+pipenv install pandas
+pipenv install polars
+```
+
+After installing the requirements, you have `Pipfile` (which is written in TOML
+and you can also manually change it) and `Pipfile.lock`:
+
+```toml
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+streamlit = "*"
+pandas = "*"
+
+[dev-packages]
+ruff = "*"
+mypy = "*"
+pandas-stubs = "*"
+
+[requires]
+python_version = "3.12"
+```
+
+Python is a dynamically typed language, so we **strongly** suggest use following
+linters in your code:
+
+- [`mypy`](https://mypy.readthedocs.io/en/stable/)
+- [`ruff`](https://docs.astral.sh/ruff/)
 
 ## How to run?
 
